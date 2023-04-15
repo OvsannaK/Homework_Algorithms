@@ -1,0 +1,98 @@
+//1. xCreate a function that takes a number as an argument. Add up all the numbers from 1 to the number you 
+//passed to the function. For example, if the input is 4 then your function should return 10 
+//because 1 + 2 + 3 + 4 = 10.
+
+
+function addUpNumbers (n) {
+    let sum = 0
+    for (let i = 1; i <= n; i ++) {
+        sum = sum + i
+    }
+    return sum
+}
+console.log (addUpNumbers (4))
+console.log (addUpNumbers (13))
+console.log (addUpNumbers (600))
+
+
+
+// 2. Create a function that determines whether an input value is omnipresent for a given array.
+
+// Examples
+// isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 1) ➞ true
+// isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 6) ➞ false
+// isOmnipresent([[5], [5], [5], [6, 5]], 5) ➞ true
+// isOmnipresent([[5], [5], [5], [6, 5]], 6) ➞ false
+
+
+function isOmnipresent (arr, num) {       //Includes i pokharen vonc karayi anei? moracel em (((
+    for (let i = 0; i < arr.length; i++) {
+    if (arr[i].includes(num)) {
+        return true
+    }
+    else {
+        return false
+    }
+}}
+
+console.log (isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 1))
+console.log (isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 6))
+console.log (isOmnipresent([[5], [5], [5], [6, 5]], 5))
+console.log (isOmnipresent([[5], [5], [5], [6, 5]], 6) )
+
+
+//3. Create a function that takes an array of numbers between 1 and 10 (excluding one number) and returns 
+// the missing number.
+// Try to use one of sorting or searching algorithms
+  
+
+function findMissingNumber(arr) {
+  
+    arr.sort(function(a, b) {
+      return a - b;
+    });
+  
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] !== i + 1) {
+        return i + 1;
+      }
+    }
+  
+    return arr.length + 1;
+  }
+  
+ 
+  console.log(findMissingNumber([1, 2, 3, 4, 6, 7, 8, 9, 10]));
+  console.log(findMissingNumber([7, 2, 3, 6, 5, 9, 1, 4, 8]));
+  console.log(findMissingNumber([10, 5, 1, 2, 4, 6, 8, 3, 9]));
+
+
+// 4. Create a function that converts a string of letters to their respective 
+// number in the alphabet.   1-ic em hamarakalel 0i pokharen
+
+  function lettersToNumbers(str) {
+
+    const alphabet = {
+      'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8,
+      'i': 9, 'j': 10, 'k': 11, 'l': 12, 'm': 13, 'n': 14, 'o': 15,
+      'p': 16, 'q': 17, 'r': 18, 's': 19, 't': 20, 'u': 21, 'v': 22,
+      'w': 23, 'x': 24, 'y': 25, 'z': 26
+    };
+  
+
+    const letters = str.toLowerCase().split('');
+    const numbers = letters.map(letter => {
+      if (alphabet.hasOwnProperty(letter)) {
+        return alphabet[letter].toString();
+      }
+      return letter;
+    });
+
+    const result = numbers.join(' ');
+  
+    return result;
+  }
+  
+  console.log (lettersToNumbers ('XYZ'))
+  console.log (lettersToNumbers ('ABCDEF'))
+  console.log (lettersToNumbers ('JAVASCRIPT'))
